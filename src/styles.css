@@ -3,9 +3,11 @@
 
 :root {
   --bg-color: #F7F7F7;
+  --text-black: #1D1E18;
 }
 
 body {
   font-family: 'Poppins', sans-serif;
   background-color: var(--bg-color);
+  color: var(--text-black);
 }

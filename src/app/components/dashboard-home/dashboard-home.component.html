@@ -1,37 +1,54 @@
-<div class="row row-cols-1 row-cols-md-3 g-4">
-  <div class="col">
-    <div class="card">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+<div class="container-fluid mt-1 mb-5">
+  <h1 class="display-3 fw-normal mb-3">Benvenuto User!</h1>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col">
+      <div class="card dashboard-card">
+        <div class="card-body">
+          <img class="card-icon-selected" src="../../../assets/dashboard_white.png" />
+          <h5 class="card-title-selected">Dashboard</h5>
+          <p class="card-text-selected">Vai alla dashboard generale</p>
+          <a [routerLink]="'general'"><img class="card-arrow-selected" src="../../../assets/arrow_white.png" /></a>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <img class="card-icon" src="../../../assets/users_black.png" />
+          <h5 class="card-title">Utenti</h5>
+          <p class="card-text">Vai alla sezione per gestire gli utenti</p>
+          <img class="card-arrow" src="../../../assets/arrow.png" />
+        </div>
       </div>
     </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <img class="card-icon" src="../../../assets/chart_black.png" />
+          <h5 class="card-title">Statistiche</h5>
+          <p class="card-text">Vai alla sezione per vedere grafici e statistiche</p>
+          <img class="card-arrow" src="../../../assets/arrow.png" />
+        </div>
       </div>
     </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <img class="card-icon" src="../../../assets/menu_black.png" />
+          <h5 class="card-title">Menu</h5>
+          <p class="card-text">Vai alla sezione dove puoi modificare il menu del giorno</p>
+          <img class="card-arrow" src="../../../assets/arrow.png" />
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <img class="card-icon" src="../../../assets/piatti_black.png" />
+          <h5 class="card-title">Piatti</h5>
+          <p class="card-text">Vai alla sezione per gestire i piatti, aggiungere ingredienti ecc...</p>
+          <img class="card-arrow" src="../../../assets/arrow.png" />
+        </div>
       </div>
     </div>
   </div>
