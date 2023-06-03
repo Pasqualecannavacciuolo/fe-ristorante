@@ -1,18 +1,18 @@
 <div class="wrapper">
 
-  <div class="sidebar flex-shrink-0 p-3 bg-white" style="width: 280px;">
+  <div class="sidebar flex-shrink-0 p-3 bg-white" >
     <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
       <img src="../assets/logo.png" class="bi me-2" width="64" height="64" alt="">
-      <span class="fs-5 fw-regular">Restaurant Manager</span>
+      <span class="fs-5 fw-regular sidebar-text">Restaurant Manager</span>
     </a>
     <ul class="list-unstyled ps-0">
       <li class="mb-1">
-        <button class="btn align-items-center rounded" (click)="onClick('is_hovered_home', 'is_hovered_home_img')">
+        <button [routerLink]="'home'" class="btn align-items-center rounded" (click)="onClick('is_hovered_home', 'is_hovered_home_img')">
           <div class="icon-container">
             <div id="is_hovered_home" class="menu-item hover is-hovered align-items-center">
               <img id="is_hovered_home_img"width="32" height="32" src="../assets/home-page_green.png" class="is_hovered_img"/>
             </div>
-            <span>Home</span>
+            <span class="sidebar-text">Home</span>
           </div>
         </button>
       </li>
@@ -22,7 +22,7 @@
             <div id="is_hovered_utenti" class="menu-item hover align-items-center">
               <img id="is_hovered_utenti_img" width="32" height="32" src="../assets/users_black.png" class="is_hovered_img"/>
             </div>
-            <span>Utenti</span>
+            <span class="sidebar-text">Utenti</span>
           </div>
         </button>
         <!--<div class="collapse" id="pm3-collapse">
@@ -39,7 +39,7 @@
             <div id="is_hovered_statistiche" class="menu-item hover align-items-center">
               <img id="is_hovered_statistiche_img" width="32" height="32" src="../assets/chart_black.png" class="is_hovered_img"/>
             </div>
-            <span>Statistiche</span>
+            <span class="sidebar-text">Statistiche</span>
           </div>
         </button>
       </li>
@@ -49,7 +49,7 @@
             <div id="is_hovered_menu" class="menu-item hover align-items-center">
               <img id="is_hovered_menu_img"width="32" height="32" src="../assets/menu_black.png" class="is_hovered_img"/>
             </div>
-            <span>Menu</span>
+            <span class="sidebar-text">Menu</span>
           </div>
         </button>
       </li>
@@ -59,7 +59,7 @@
             <div id="is_hovered_piatti" class="menu-item hover align-items-center">
               <img id="is_hovered_piatti_img" width="32" height="32" src="../assets/piatti_black.png" class="is_hovered_img"/>
             </div>
-            <span>Piatti</span>
+            <span class="sidebar-text">Piatti</span>
           </div>
         </button>
       </li>

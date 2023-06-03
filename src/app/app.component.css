@@ -79,3 +79,18 @@ main {
 .btn {
   border: none;
 }
+
+
+/* RESPONSIVE */
+
+/* Smartphone */
+@media (max-width: 600px) {
+  .sidebar-text {
+      display: none;
+  }
+
+  .sidebar {
+    width: fit-content;
+    height: auto;
+  }
+}
