@@ -33,16 +33,6 @@ main {
   overflow-y: hidden;
 }
 
-.b-example-divider {
-  flex-shrink: 0;
-  width: 1.5rem;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, .1);
-  border: solid rgba(0, 0, 0, .15);
-  border-width: 1px 0;
-  box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-}
-
 .bi {
   vertical-align: -.125em;
   pointer-events: none;
@@ -56,21 +46,21 @@ main {
 }
 
 .hover {
-  /*background-color: #d2e9f4;*/
   width: fit-content;
   display: inline-flex;
   align-items: center;
-  padding: 3px
+  padding: 3px;
+  border-radius: 5px;
+  -webkit-transition: background-color .3s ease-in-out;
+  -moz-transition: background-color .3s ease-in-out;
+  -o-transition: background-color .3s ease-in-out;
+  transition: background-color .3s ease-in-out;
 }
 
-
-
-.hover:hover, .is-hovered {
+.is-hovered {
   background-color: #AAD2BA;
   border-radius: 5px;
 }
-
-
 
 .icon-container {
   display: flex;
@@ -78,10 +68,14 @@ main {
   align-items: center;
 }
 
-
 .scrollarea {
   overflow-y: auto;
 }
 
 .fw-semibold { font-weight: 600; }
 .lh-tight { line-height: 1.25; }
+
+
+.btn {
+  border: none;
+}
