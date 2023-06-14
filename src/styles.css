@@ -4,10 +4,33 @@
 :root {
   --bg-color: #F7F7F7;
   --text-black: #1D1E18;
+  --btn-black: #1D1E18;
+  --btn-black-hovered: #22231c;
 }
 
 body {
   font-family: 'Poppins', sans-serif;
   background-color: var(--bg-color);
   color: var(--text-black);
+}
+
+.button-success {
+  background-color: var(--btn-success);
+  color: #fafafa;
+}
+
+.button-success:hover {
+  background-color: var(--btn-success-hover);
+  color: #fafafa;
+}
+
+.btn-primary {
+  background-color: var(--btn-black);
+  color: #fafafa;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--btn-black-hovered);
+  color: #fafafa;
 }
