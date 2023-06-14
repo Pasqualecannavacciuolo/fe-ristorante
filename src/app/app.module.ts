@@ -8,19 +8,22 @@ import { AppComponent } from './app.component';
 import { DashboardHomeComponent } from './components/dashboard-home/dashboard-home.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardSidebarComponent } from './components/dashboard-sidebar/dashboard-sidebar.component';
+import { DashboardUtentiComponent } from './components/dashboard-utenti/dashboard-utenti.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardHomeComponent,
     LoginComponent,
-    DashboardSidebarComponent
+    DashboardSidebarComponent,
+    DashboardUtentiComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
