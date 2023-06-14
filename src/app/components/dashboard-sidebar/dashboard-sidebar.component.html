@@ -7,7 +7,7 @@
     </a>
     <ul class="list-unstyled ps-0">
       <li class="mb-1">
-        <button [routerLink]="'home'" class="btn align-items-center rounded" (click)="onClick('is_hovered_home', 'is_hovered_home_img')">
+        <button [routerLink]="'/home'" class="btn align-items-center rounded" (click)="onClick('is_hovered_home', 'is_hovered_home_img')">
           <div class="icon-container">
             <div id="is_hovered_home" class="menu-item hover is-hovered align-items-center">
               <img id="is_hovered_home_img"width="32" height="32" src="../assets/home-page_green.png" class="is_hovered_img"/>
@@ -17,7 +17,7 @@
         </button>
       </li>
       <li class="mb-1">
-        <button class="btn align-items-center rounded" (click)="onClick('is_hovered_utenti', 'is_hovered_utenti_img')">
+        <button [routerLink]="[{ outlets: { dashboard: ['utenti'] } }]" class="btn align-items-center rounded" (click)="onClick('is_hovered_utenti', 'is_hovered_utenti_img')">
           <div class="icon-container">
             <div id="is_hovered_utenti" class="menu-item hover align-items-center">
               <img id="is_hovered_utenti_img" width="32" height="32" src="../assets/users_black.png" class="is_hovered_img"/>

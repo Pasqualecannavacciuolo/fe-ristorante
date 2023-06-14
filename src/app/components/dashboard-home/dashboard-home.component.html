@@ -1,5 +1,4 @@
 <div class="container-fluid mt-5 mb-5">
-
   <div class="row row-cols-1 row-cols-md-3 g-4">
     <div class="col">
       <div class="card dashboard-card">
@@ -17,7 +16,7 @@
           <img class="card-icon" src="../../../assets/users_black.png" />
           <h5 class="card-title">Utenti</h5>
           <p class="card-text">Vai alla sezione per gestire gli utenti</p>
-          <img class="card-arrow" src="../../../assets/arrow.png" />
+          <a [routerLink]="[{ outlets: { dashboard: ['utenti'] } }]"><img class="card-arrow" src="../../../assets/arrow.png" /></a>
         </div>
       </div>
     </div>
