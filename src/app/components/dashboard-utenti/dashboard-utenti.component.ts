@@ -10,7 +10,7 @@ export class DashboardUtentiComponent {
 
 
   constructor(
-    private utentiService: UtentiService,
+    private utentiService: UtentiService
   ) { }
 
   onSubmit() {
