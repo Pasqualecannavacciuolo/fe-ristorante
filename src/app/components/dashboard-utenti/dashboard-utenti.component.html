@@ -11,12 +11,32 @@
     <div></div>
   </div>
 
-  <button
-      id="button"
-      type="submit"
-      class="btn btn-primary visible"
-      (click)="onSubmit()"
-    >GetAllUtenti</button>
+
+    <div class="table-responsive invisible" id="table">
+      <table class="table caption-top">
+        <caption>Lista degli utenti</caption>
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome_Utente</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Cognome</th>
+            <th scope="col">Ruolo</th>
+            <th scope="col">Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of utenti">
+            <th scope="row">{{ user.id }}</th>
+            <td>{{ user.nome_utente }}</td>
+            <td>{{ user.nome }}</td>
+            <td>{{ user.cognome }}</td>
+            <td>{{ user.role }}</td>
+            <td>{{ user.email }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 </div>
 
 
