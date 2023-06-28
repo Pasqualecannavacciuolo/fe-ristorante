@@ -3,19 +3,22 @@ import { CommonModule } from '@angular/common';
 // CHARTS
 import { NgApexchartsModule } from "ng-apexcharts";
 import { AreaComponent } from './components/charts/area/area.component';
+import { LineComponent } from './components/charts/line/line.component';
 
 
 
 @NgModule({
   declarations: [
-    AreaComponent
+    AreaComponent,
+    LineComponent
   ],
   imports: [
     CommonModule,
     NgApexchartsModule
   ],
   exports: [
-    AreaComponent
+    AreaComponent,
+    LineComponent
   ]
 })
 export class SharedModule { }

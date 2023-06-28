@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-
 @Component({
   selector: 'app-dashboard-home',
   templateUrl: './dashboard-home.component.html',
@@ -8,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardHomeComponent implements OnInit {
 
+  // Area chart
   series : any = [];
   chart : any = {};
   dataLabels : any = {};
@@ -15,9 +15,21 @@ export class DashboardHomeComponent implements OnInit {
   xaxis : any = {};
   tooltip : any = {};
 
+  // Line chart
+  title : any = {};
+  grid : any = {};
+  lineXaxis : any = {};
+  lineYaxis : any = {};
+  lineSeries : any = [];
+  lineChart : any = {};
+  lineDataLabels : any = {};
+  lineStroke : any = {};
+
   constructor() {}
 
   ngOnInit(): void {
+
+    // AREA CHART
     this.series = [
       {
         name: "series1",
@@ -61,6 +73,71 @@ export class DashboardHomeComponent implements OnInit {
         format: "dd/MM/yy HH:mm"
       }
     };
+
+    this.title = {
+      text: "Product Trends by Month",
+      align: "left"
+    };
+
+    this.grid = {
+      show: false,
+      /*row: {
+        colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
+        opacity: 0.5
+      }*/
+    };
+
+    // LINE CHART
+    this.lineSeries = [
+      {
+        name: "Desktops",
+        data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+      }
+    ];
+
+    this.lineChart = {
+      height: 200,
+      width: 350,
+      type: "line",
+      zoom: {
+        enabled: false
+      },
+      toolbar: {
+        show: false
+      },
+      sparkline: {
+        enabled: true,
+    }
+    };
+
+    this. lineDataLabels = {
+      enabled: false
+    };
+
+    this.lineStroke = {
+      curve: "straight"
+    };
+
+    this.lineXaxis = {
+      labels: {
+        show: false
+      },
+      /*categories: [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep"
+      ]*/
+    }
+
+    this.lineYaxis = {
+      show: false
+    }
 
   }
 
