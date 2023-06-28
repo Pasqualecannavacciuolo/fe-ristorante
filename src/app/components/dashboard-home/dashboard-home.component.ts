@@ -16,11 +16,13 @@ export class DashboardHomeComponent implements OnInit {
   tooltip : any = {};
 
   // Line chart
-  title : any = {};
+  //title : any = {};
   grid : any = {};
   lineXaxis : any = {};
   lineYaxis : any = {};
-  lineSeries : any = [];
+  lineSeriesIncasso : any = [];
+  lineSeriesTavoliServiti : any = [];
+  lineSeriesPrenotazioni : any = [];
   lineChart : any = {};
   lineDataLabels : any = {};
   lineStroke : any = {};
@@ -74,10 +76,10 @@ export class DashboardHomeComponent implements OnInit {
       }
     };
 
-    this.title = {
+    /*this.title = {
       text: "Product Trends by Month",
       align: "left"
-    };
+    };*/
 
     this.grid = {
       show: false,
@@ -88,15 +90,29 @@ export class DashboardHomeComponent implements OnInit {
     };
 
     // LINE CHART
-    this.lineSeries = [
+    this.lineSeriesIncasso = [
       {
-        name: "Desktops",
-        data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+        name: "Incasso",
+        data: [1500, 900, 2506, 3288, 1899, 789, 1125, 1366, 2436]
+      }
+    ];
+
+    this.lineSeriesTavoliServiti = [
+      {
+        name: "Tavoli serviti",
+        data: [98, 68, 147, 269, 311, 290, 150, 99, 31]
+      }
+    ];
+
+    this.lineSeriesPrenotazioni = [
+      {
+        name: "Prenotazioni",
+        data: [36, 22, 56, 196, 270, 20, 71, 54, 10]
       }
     ];
 
     this.lineChart = {
-      height: 200,
+      height: 150,
       width: 350,
       type: "line",
       zoom: {
@@ -122,17 +138,17 @@ export class DashboardHomeComponent implements OnInit {
       labels: {
         show: false
       },
-      /*categories: [
-        "Jan",
+      categories: [
+        "Gen",
         "Feb",
         "Mar",
         "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep"
-      ]*/
+        "Mag",
+        "Giu",
+        "Lug",
+        "Ago",
+        "Set"
+      ]
     }
 
     this.lineYaxis = {
