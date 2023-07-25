@@ -1,23 +1,38 @@
 <div class="container-fluid mt-5 mb-5">
   <div class="row">
     <div class="line-chart-wrapper col-sm">
-      <h3 class="lead fw-normal mb-3">Incasso mensile</h3>
+      <div class="box">
+        <span class="lead fw-normal">
+          Incasso mensile
+        </span>
+        <img src="../../../assets/soldi.png" width="46px" height="46px" alt="icona incasso">
+      </div>
       <div class="app-line">
-        <app-line [inputSeries]="lineSeriesIncasso" [inputChart]="lineChart" [inputXaxis]="lineXaxis" [inputYaxis]="lineYaxis" [inputStroke]="lineStroke"
+        <app-line [inputSeries]="lineSeriesIncasso" [inputChart]="lineChart" [inputXaxis]="lineXaxis" [inputYaxis]="lineYaxis" [inputStroke]="lineStrokeIncasso"
         [inputGrid]="grid" [inputDataLabels]="lineDataLabels"></app-line>
       </div>
     </div>
     <div class="line-chart-wrapper col-sm">
-      <h3 class="lead fw-normal mb-3">Tavoli serviti mensilmente</h3>
+      <div class="box">
+        <span class="lead fw-normal">
+          Tavoli serviti mensilmente
+        </span>
+        <img src="../../../assets/tavolo.png" width="46px" height="46px" alt="icona tavoli serviti">
+      </div>
       <div class="app-line">
-        <app-line [inputSeries]="lineSeriesTavoliServiti" [inputChart]="lineChart" [inputXaxis]="lineXaxis" [inputYaxis]="lineYaxis" [inputStroke]="lineStroke"
+        <app-line [inputSeries]="lineSeriesTavoliServiti" [inputChart]="lineChart" [inputXaxis]="lineXaxis" [inputYaxis]="lineYaxis" [inputStroke]="lineStrokeTavoliServiti"
         [inputGrid]="grid" [inputDataLabels]="lineDataLabels"></app-line>
       </div>
       </div>
     <div class="line-chart-wrapper col-sm">
-      <h3 class="lead fw-normal mb-3">Prenotazioni mensili</h3>
+      <div class="box">
+        <span class="lead fw-normal">
+          Prenotazioni mensili
+        </span>
+        <img src="../../../assets/prenotazioni.png" width="46px" height="46px" alt="icona prenotazioni">
+      </div>
       <div class="app-line">
-        <app-line [inputSeries]="lineSeriesPrenotazioni" [inputChart]="lineChart" [inputXaxis]="lineXaxis" [inputYaxis]="lineYaxis" [inputStroke]="lineStroke"
+        <app-line [inputSeries]="lineSeriesPrenotazioni" [inputChart]="lineChart" [inputXaxis]="lineXaxis" [inputYaxis]="lineYaxis" [inputStroke]="lineStrokePrenotazioni"
         [inputGrid]="grid" [inputDataLabels]="lineDataLabels"></app-line>
       </div>
     </div>

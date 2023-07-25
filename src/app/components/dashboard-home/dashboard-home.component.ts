@@ -20,12 +20,17 @@ export class DashboardHomeComponent implements OnInit {
   grid : any = {};
   lineXaxis : any = {};
   lineYaxis : any = {};
+  colorsIncasso : any = [];
+  colorsTavoliServiti : any = [];
+  colorsPrenotazioni : any = [];
   lineSeriesIncasso : any = [];
   lineSeriesTavoliServiti : any = [];
   lineSeriesPrenotazioni : any = [];
   lineChart : any = {};
   lineDataLabels : any = {};
-  lineStroke : any = {};
+  lineStrokeIncasso : any = {};
+  lineStrokeTavoliServiti : any = {};
+  lineStrokePrenotazioni : any = {};
 
   constructor() {}
 
@@ -90,6 +95,10 @@ export class DashboardHomeComponent implements OnInit {
     };
 
     // LINE CHART
+    this.colorsIncasso = ['#52BE80'];
+    this.colorsTavoliServiti = ['#52BE80'];
+    this.colorsPrenotazioni = ['#52BE80'];
+
     this.lineSeriesIncasso = [
       {
         name: "Incasso",
@@ -123,15 +132,26 @@ export class DashboardHomeComponent implements OnInit {
       },
       sparkline: {
         enabled: true,
-    }
+      }
     };
 
     this. lineDataLabels = {
       enabled: false
     };
 
-    this.lineStroke = {
-      curve: "straight"
+    this.lineStrokeIncasso = {
+      curve: "smooth",
+      colors : this.colorsIncasso
+    };
+
+    this.lineStrokeTavoliServiti = {
+      curve: "smooth",
+      colors : this.colorsTavoliServiti
+    };
+
+    this.lineStrokePrenotazioni = {
+      curve: "smooth",
+      colors : this.colorsPrenotazioni
     };
 
     this.lineXaxis = {

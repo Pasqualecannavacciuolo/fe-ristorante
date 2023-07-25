@@ -8,7 +8,8 @@ import {
   ApexTitleSubtitle,
   ApexStroke,
   ApexGrid,
-  ApexYAxis
+  ApexYAxis,
+  ApexFill
 } from "ng-apexcharts";
 
 export type ChartOptions = {
@@ -20,6 +21,8 @@ export type ChartOptions = {
   grid: ApexGrid;
   stroke: ApexStroke;
   title: ApexTitleSubtitle;
+  fill: ApexFill;
+  colors : any
 };
 @Component({
   selector: 'app-line',
@@ -39,6 +42,7 @@ export class LineComponent implements OnInit {
   @Input() inputTitle : any = {};
   @Input() inputGrid : any = {};
   @Input() inputStroke : any = {};
+  @Input() colors : any = [];
 
   constructor() {
     this.chartOptions = {};
@@ -46,6 +50,7 @@ export class LineComponent implements OnInit {
 
   ngOnInit(): void {
     this.chartOptions = {
+      colors : this.colors,
       series: this.inputSeries,
       chart: this.inputChart,
       dataLabels: this.inputDataLabels,
@@ -55,7 +60,6 @@ export class LineComponent implements OnInit {
       grid: this.inputGrid,
       stroke: this.inputStroke
     };
-
   }
 
 }
