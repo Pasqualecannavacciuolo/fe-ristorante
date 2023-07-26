@@ -1,0 +1,38 @@
+<div class="table-responsive" id="table">
+  <table class="table table-borderless  caption-top table-hover table-nowrap">
+    <caption>Effettua delle modifiche</caption>
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col"></th>
+        <th scope="col">Nome_Utente</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Cognome</th>
+        <th scope="col">Ruolo</th>
+        <th scope="col">Presenza</th>
+        <th class="text-center" scope="col">Modifica</th>
+        <th class="text-center" scope="col">Cancella</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of utenti">
+        <th scope="row">{{ user.id }}</th>
+        <td><img class="avatar avatar-sm rounded-circle me-2" src="../../../../../assets/user1.jpeg"/></td>
+        <td>{{ user.nome_utente }}</td>
+        <td>{{ user.nome }}</td>
+        <td>{{ user.cognome }}</td>
+        <td>{{ user.role }}</td>
+        <td>
+          <span
+          [ngClass]="{
+            'bg-soft-warning text-warning' : user.presenza === 'timbrato in ritardo',
+            'bg-soft-danger text-danger' : user.presenza === 'assente',
+            'bg-soft-success text-success' : user.presenza === 'presente'
+          }" class="badge">{{ user.presenza }}</span>
+        </td>
+        <td class="text-center pointer"><img src="../../../../../assets/modifica.png" width="36px" height="36px" /></td>
+        <td class="text-center pointer"><img src="../../../../../assets/elimina.png" width="36px" height="36px" /></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

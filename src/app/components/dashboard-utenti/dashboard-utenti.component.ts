@@ -15,27 +15,23 @@ export class DashboardUtentiComponent implements OnInit{
   ) { }
 
   utenti : Utenti[] = [];
+  presenza : string[] = ['presente', 'assente', 'timbrato in ritardo'];
 
   ngOnInit(): void {
-    this.onSubmit()
+    this.utentiService.getAllUtenti().subscribe(data => {
+
+      this.utentiService.utenti = data;
+      this.utenti = data;
+      this.utenti.forEach(utente => {
+        utente.presenza = this.presenza[(Math.floor(Math.random() * this.presenza.length))];
+      });
+      //console.log(this.utentiService.utenti);
+
+    });
   }
 
   onSubmit() {
-    const loader = document.getElementById('loader');
-    loader!.classList.remove('invisible');
-    loader!.classList.add('visible');
-    this.utentiService.getAllUtenti().subscribe(data => {
-      setTimeout(() => {
-        this.utentiService.utenti = data;
-        this.utenti = data;
-        console.log(this.utentiService.utenti);
-        loader!.classList.remove('visible');
-        loader!.classList.add('invisible');
-        const table = document.getElementById('table');
-        table!.classList.remove('invisible');
-        table!.classList.add('visible');
-      }, 2000);
-    });
+
   }
 
 }

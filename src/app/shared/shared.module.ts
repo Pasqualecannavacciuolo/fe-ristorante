@@ -5,6 +5,7 @@ import { NgApexchartsModule } from "ng-apexcharts";
 import { AreaComponent } from './components/charts/area/area.component';
 import { LineComponent } from './components/charts/line/line.component';
 import { SimpletableComponent } from './components/table/simpletable/simpletable.component';
+import { ActiontableComponent } from './components/table/actiontable/actiontable.component';
 
 
 
@@ -12,7 +13,8 @@ import { SimpletableComponent } from './components/table/simpletable/simpletable
   declarations: [
     AreaComponent,
     LineComponent,
-    SimpletableComponent
+    SimpletableComponent,
+    ActiontableComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +23,8 @@ import { SimpletableComponent } from './components/table/simpletable/simpletable
   exports: [
     AreaComponent,
     LineComponent,
-    SimpletableComponent
+    SimpletableComponent,
+    ActiontableComponent
   ]
 })
 export class SharedModule { }
