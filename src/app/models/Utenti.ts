@@ -16,4 +16,5 @@ export interface Utenti {
   cambio_password : boolean;
   ultimo_accesso : string;
   role : Role;
+  presenza? : string;
 }

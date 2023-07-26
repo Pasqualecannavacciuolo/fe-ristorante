@@ -6,6 +6,9 @@
   --text-black: #1D1E18;
   --btn-black: #1D1E18;
   --btn-black-hovered: #22231c;
+  --x-warning-rgb: 255, 140, 0;
+  --x-danger-rgb: 255, 51, 102;
+  --x-success-rgb: 0, 204, 136;
 }
 
 body {

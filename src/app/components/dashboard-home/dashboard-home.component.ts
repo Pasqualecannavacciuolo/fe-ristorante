@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Utenti } from 'src/app/models/Utenti';
+import { UtentiService } from 'src/app/services/utenti.service';
 
 @Component({
   selector: 'app-dashboard-home',
@@ -32,7 +34,11 @@ export class DashboardHomeComponent implements OnInit {
   lineStrokeTavoliServiti : any = {};
   lineStrokePrenotazioni : any = {};
 
-  constructor() {}
+  // Tabella utenti
+  utenti : Utenti[] = [];
+  presenza : string[] = ['presente', 'assente', 'timbrato in ritardo'];
+
+  constructor(private utentiService: UtentiService) {}
 
   ngOnInit(): void {
 
@@ -174,6 +180,14 @@ export class DashboardHomeComponent implements OnInit {
     this.lineYaxis = {
       show: false
     }
+
+    // TABELLA DEL PERSONALE
+    this.utentiService.getAllUtenti().subscribe( data => {
+      this.utenti = data;
+      this.utenti.forEach(utente => {
+        utente.presenza = this.presenza[(Math.floor(Math.random() * this.presenza.length))];
+      });
+    });
 
   }
 
