@@ -20,7 +20,7 @@ export class UtentiService {
   getAllUtenti(): Observable<Utenti[]> {
     let token = this.accessService.getToken();
     const headers = { 'Authorization': 'Bearer '+token }
-    const url = environment.apiUrl+"management/utenti";
+    const url = environment.apiUrl+"management/utenti/";
     return this.http.get<Utenti[]>(url, {headers});
   }
 }
