@@ -30,7 +30,11 @@
             'bg-soft-success text-success' : user.presenza === 'presente'
           }" class="badge">{{ user.presenza }}</span>
         </td>
-        <td class="text-center pointer"><img src="../../../../../assets/modifica.png" width="36px" height="36px" /></td>
+        <td class="text-center pointer">
+          <button (click)="redirectToUpdateUtente(user)">
+            <img src="../../../../../assets/modifica.png" width="36px" height="36px" />
+          </button>
+        </td>
         <td class="text-center pointer"><img src="../../../../../assets/elimina.png" width="36px" height="36px" /></td>
       </tr>
     </tbody>

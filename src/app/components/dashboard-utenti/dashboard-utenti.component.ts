@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Utenti } from 'src/app/models/Utenti';
 import { UtentiService } from 'src/app/services/utenti.service';
 
@@ -11,7 +12,8 @@ export class DashboardUtentiComponent implements OnInit{
 
 
   constructor(
-    private utentiService: UtentiService
+    private utentiService: UtentiService,
+    private router: Router
   ) { }
 
   utenti : Utenti[] = [];

@@ -4,6 +4,7 @@ import { LoginComponent } from './components/login/login.component';
 import { DashboardSidebarComponent } from './components/dashboard-sidebar/dashboard-sidebar.component';
 import { DashboardHomeComponent } from './components/dashboard-home/dashboard-home.component';
 import { DashboardUtentiComponent } from './components/dashboard-utenti/dashboard-utenti.component';
+import { UpdateUtenteComponent } from './components/dashboard-utenti/update-utente/update-utente.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,11 @@ const routes: Routes = [
       {
         path: 'utenti',
         component: DashboardUtentiComponent,
+        outlet: 'dashboard'
+      },
+      {
+        path: 'updateUtente/:id',
+        component: UpdateUtenteComponent,
         outlet: 'dashboard'
       }
     ]

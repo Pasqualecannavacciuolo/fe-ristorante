@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Utenti } from 'src/app/models/Utenti';
 
 @Component({
@@ -10,9 +11,13 @@ export class ActiontableComponent implements OnInit {
 
   @Input() utenti : Utenti[] = [];
 
-  constructor() { }
+  constructor(private router : Router, private route : ActivatedRoute) {}
 
   ngOnInit(): void {
+  }
+
+  redirectToUpdateUtente(user: Utenti) : void {
+    this.router.navigate(['/home/',{ outlets: { dashboard: ['updateUtente', user.id] } }]);
   }
 
 }

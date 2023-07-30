@@ -1,8 +1,9 @@
 // ANGULAR
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 // COMPONENTS
 import { AppRoutingModule } from './app-routing.module';
@@ -11,9 +12,12 @@ import { DashboardHomeComponent } from './components/dashboard-home/dashboard-ho
 import { LoginComponent } from './components/login/login.component';
 import { DashboardSidebarComponent } from './components/dashboard-sidebar/dashboard-sidebar.component';
 import { DashboardUtentiComponent } from './components/dashboard-utenti/dashboard-utenti.component';
+import { UpdateUtenteComponent } from './components/dashboard-utenti/update-utente/update-utente.component';
 import { SharedModule } from './shared/shared.module';
+
 // CHARTS
 import { NgApexchartsModule } from "ng-apexcharts";
+
 
 @NgModule({
   declarations: [
@@ -22,14 +26,17 @@ import { NgApexchartsModule } from "ng-apexcharts";
     LoginComponent,
     DashboardSidebarComponent,
     DashboardUtentiComponent,
+    UpdateUtenteComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     NgApexchartsModule,
-    SharedModule
+    SharedModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
