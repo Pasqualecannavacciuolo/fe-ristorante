@@ -35,7 +35,31 @@
             <img src="../../../../../assets/modifica.png" width="36px" height="36px" />
           </button>
         </td>
-        <td class="text-center pointer"><img src="../../../../../assets/elimina.png" width="36px" height="36px" /></td>
+        <td class="text-center pointer">
+          <!-- Button trigger modal -->
+          <button type="button" class="btn" data-bs-toggle="modal" [attr.data-bs-target]="'#Modal'+user.id">
+            <img src="../../../../../assets/elimina.png" width="36px" height="36px" />
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="Modal{{user.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Conferma eliminazione per userID: {{user.id}}</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  Vuoi davvero procedere all'eliminazione?
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Indietro</button>
+                  <button type="button" class="btn btn-primary" (click)="deleteUtente(user.id!)">Procedi</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
       </tr>
     </tbody>
   </table>

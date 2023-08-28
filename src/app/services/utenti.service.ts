@@ -37,4 +37,11 @@ export class UtentiService {
     const url = environment.apiUrl+"management/utenti/"+id;
     return this.http.put<Utenti>(url, userObj, {headers});
   }
+
+  deleteUtente(id: number): Observable<Utenti> {
+    let token = this.accessService.getToken();
+    const headers = { 'Authorization': 'Bearer '+token };
+    const url = environment.apiUrl+"management/utenti/"+id;
+    return this.http.delete<Utenti>(url, {headers});
+  }
 }
