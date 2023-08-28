@@ -31,7 +31,7 @@ export class UpdateUtenteComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // Inizializzo i valori del FORM
+    // Creo il FORM
     this.updateUserForm = this.formBuilder.group({
       nome: ['', Validators.required],
       cognome: ['', Validators.required],
@@ -46,6 +46,10 @@ export class UpdateUtenteComponent implements OnInit {
     // Ottengo l'utente in base all'ID contenuto nell'URL
     this.utentiService.getUtente(this.userId).subscribe(data => {
       this.userObj = data;
+      // Inizializzo il form con i valori presi dal database
+      this.updateUserForm.patchValue({nome : this.userObj.nome});
+      this.updateUserForm.patchValue({cognome : this.userObj.cognome});
+      this.updateUserForm.patchValue({email : this.userObj.email});
     });
   }
 
@@ -87,10 +91,11 @@ export class UpdateUtenteComponent implements OnInit {
       this.updatedUserObj.role = Role[Role.USER];
     }*/
 
+    // Rimuovo la proprieta'  "authorities" dall'oggetto "updatedUserObj"
     delete this.updatedUserObj['authorities'];
-    console.log(this.updatedUserObj)
 
     this.utentiService.updateUtente(this.updatedUserObj, this.userId).subscribe(res => {
+      // Operazioni da effettuare dopo l'invio del form
       console.log(res)
     });
   }
