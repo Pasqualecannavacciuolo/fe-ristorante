@@ -94,3 +94,16 @@ main {
     height: auto;
   }
 }
+
+
+/* Tablet */
+@media (max-width: 900px) {
+  .sidebar-text {
+      display: none;
+  }
+
+  .sidebar {
+    width: fit-content;
+    height: auto;
+  }
+}

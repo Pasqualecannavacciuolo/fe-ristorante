@@ -10,8 +10,17 @@
   justify-content: center;
 }
 
-.box {
-  display: flex;
-  align-items:center;
-  justify-content: space-between;
+/* Smartphone */
+@media (max-width: 600px) {
+  .line-chart-wrapper {
+    margin: 7px 0;
+  }
+}
+
+
+/* Tablet */
+@media (max-width: 900px) {
+  .line-chart-wrapper {
+    margin: 7px 0;
+  }
 }
