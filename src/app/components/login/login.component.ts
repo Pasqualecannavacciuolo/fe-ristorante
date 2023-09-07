@@ -55,6 +55,10 @@ export class LoginComponent {
     });
   }
 
+  onTouch() {
+    this.onSubmit();
+  }
+
 
   /**
    * Funzione helper che converte il body da stringa a JSON permettendo
