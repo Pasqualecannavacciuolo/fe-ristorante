@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8081/ristorante/'
+  apiUrl: 'http://localhost:8081/ristorante/',
+  apiUrlIp: 'http://192.168.1.119:8081/ristorante/'
 };
 
 /*
