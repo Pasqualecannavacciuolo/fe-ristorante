@@ -15,7 +15,7 @@ export class AccessService {
   ) { }
 
   authenticate(email: string, password: string): Observable<any> {
-    const url = environment.apiUrlIp+"auth/authenticate";
+    const url = environment.apiUrl+"auth/authenticate";
     return this.http.post(url, {
       email: email,
       password: password
