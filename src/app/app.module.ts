@@ -17,6 +17,7 @@ import { SharedModule } from './shared/shared.module';
 
 // CHARTS
 import { NgApexchartsModule } from "ng-apexcharts";
+import { DashboardPiattiComponent } from './components/dashboard-piatti/dashboard-piatti.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { NgApexchartsModule } from "ng-apexcharts";
     DashboardSidebarComponent,
     DashboardUtentiComponent,
     UpdateUtenteComponent,
+    DashboardPiattiComponent,
   ],
   imports: [
     BrowserModule,

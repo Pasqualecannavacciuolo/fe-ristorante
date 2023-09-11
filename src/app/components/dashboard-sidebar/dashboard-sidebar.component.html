@@ -34,6 +34,16 @@
         </div>-->
       </li>
       <li class="mb-1">
+        <button [routerLink]="[{ outlets: { dashboard: ['piatti'] } }]" class="btn align-items-center rounded" (click)="onClick('is_hovered_piatti', 'is_hovered_piatti_img')">
+          <div class="icon-container">
+            <div id="is_hovered_piatti" class="menu-item hover align-items-center">
+              <img id="is_hovered_piatti_img" width="32" height="32" src="../assets/piatti_black.png" class="is_hovered_img"/>
+            </div>
+            <span class="sidebar-text">Piatti</span>
+          </div>
+        </button>
+      </li>
+      <li class="mb-1">
         <button class="btn align-items-center rounded" (click)="onClick('is_hovered_statistiche', 'is_hovered_statistiche_img')">
           <div class="icon-container">
             <div id="is_hovered_statistiche" class="menu-item hover align-items-center">
@@ -50,16 +60,6 @@
               <img id="is_hovered_menu_img"width="32" height="32" src="../assets/menu_black.png" class="is_hovered_img"/>
             </div>
             <span class="sidebar-text">Menu</span>
-          </div>
-        </button>
-      </li>
-      <li class="mb-1">
-        <button class="btn align-items-center rounded" (click)="onClick('is_hovered_piatti', 'is_hovered_piatti_img')">
-          <div class="icon-container">
-            <div id="is_hovered_piatti" class="menu-item hover align-items-center">
-              <img id="is_hovered_piatti_img" width="32" height="32" src="../assets/piatti_black.png" class="is_hovered_img"/>
-            </div>
-            <span class="sidebar-text">Piatti</span>
           </div>
         </button>
       </li>

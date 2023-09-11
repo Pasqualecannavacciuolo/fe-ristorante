@@ -1,5 +1,7 @@
 <div class="table-responsive" id="table">
-  <table class="table table-borderless caption-top table-hover table-nowrap">
+
+  <!-- UTENTI -->
+  <table *ngIf="context === 'utenti'" class="table table-borderless caption-top table-hover table-nowrap">
     <caption>Effettua delle modifiche</caption>
     <thead>
       <tr>
@@ -31,7 +33,7 @@
           }" class="badge">{{ user.presenza }}</span>
         </td>
         <td class="text-center pointer">
-          <button (click)="redirectToUpdateUtente(user)" class="btn">
+          <button (click)="redirectToUpdate('utenti',user)" class="btn">
             <img src="../../../../../assets/modifica.png" width="36px" height="36px" />
           </button>
         </td>
@@ -54,7 +56,66 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Indietro</button>
-                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="deleteUtente(user.id!)">Procedi</button>
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="deleteObj('utenti',user.id!)">Procedi</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- PIATTI -->
+  <table *ngIf="context === 'piatti'" class="table table-borderless caption-top table-hover table-nowrap">
+    <caption>Effettua delle modifiche</caption>
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nome Piatto</th>
+        <th scope="col">Costo</th>
+        <th scope="col">Descrizione</th>
+
+        <th class="text-center" scope="col">Modifica</th>
+        <th class="text-center" scope="col">Cancella</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let piatto of piatti">
+        <th scope="row">{{ piatto.id }}</th>
+        <td>{{ piatto.nome }}</td>
+        <td>
+          <span
+            class="badge bg-soft-success text-success">{{ piatto.costo }}$
+          </span>
+        </td>
+        <td>{{ piatto.descrizione }}</td>
+
+        <td class="text-center pointer">
+          <button (click)="redirectToUpdate('piatti', piatto)" class="btn">
+            <img src="../../../../../assets/modifica.png" width="36px" height="36px" />
+          </button>
+        </td>
+        <td class="text-center pointer">
+          <!-- Button trigger modal -->
+          <button type="button" class="btn" data-bs-toggle="modal" [attr.data-bs-target]="'#Modal'+piatto.id">
+            <img src="../../../../../assets/elimina.png" width="36px" height="36px" />
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="Modal{{piatto.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Conferma eliminazione per userID: {{piatto.id}}</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  Vuoi davvero procedere all'eliminazione?
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Indietro</button>
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="deleteObj('piatti',piatto.id!)">Procedi</button>
                 </div>
               </div>
             </div>

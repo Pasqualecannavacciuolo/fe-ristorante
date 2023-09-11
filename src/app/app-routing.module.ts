@@ -5,6 +5,7 @@ import { DashboardSidebarComponent } from './components/dashboard-sidebar/dashbo
 import { DashboardHomeComponent } from './components/dashboard-home/dashboard-home.component';
 import { DashboardUtentiComponent } from './components/dashboard-utenti/dashboard-utenti.component';
 import { UpdateUtenteComponent } from './components/dashboard-utenti/update-utente/update-utente.component';
+import { DashboardPiattiComponent } from './components/dashboard-piatti/dashboard-piatti.component';
 
 const routes: Routes = [
   {
@@ -29,7 +30,12 @@ const routes: Routes = [
         path: 'updateUtente/:id',
         component: UpdateUtenteComponent,
         outlet: 'dashboard'
-      }
+      },
+      {
+        path: 'piatti',
+        component: DashboardPiattiComponent,
+        outlet: 'dashboard'
+      },
     ]
   }
 ];
