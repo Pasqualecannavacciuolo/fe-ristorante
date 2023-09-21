@@ -6,6 +6,7 @@ import { DashboardHomeComponent } from './components/dashboard-home/dashboard-ho
 import { DashboardUtentiComponent } from './components/dashboard-utenti/dashboard-utenti.component';
 import { UpdateUtenteComponent } from './components/dashboard-utenti/update-utente/update-utente.component';
 import { DashboardPiattiComponent } from './components/dashboard-piatti/dashboard-piatti.component';
+import { CreateUtenteComponent } from './components/dashboard-utenti/create-utente/create-utente.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,11 @@ const routes: Routes = [
       {
         path: 'utenti',
         component: DashboardUtentiComponent,
+        outlet: 'dashboard'
+      },
+      {
+        path: 'createUtente',
+        component: CreateUtenteComponent,
         outlet: 'dashboard'
       },
       {

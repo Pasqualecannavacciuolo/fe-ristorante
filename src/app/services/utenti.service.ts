@@ -31,6 +31,20 @@ export class UtentiService {
     return this.http.get<Utenti>(url, {headers});
   }
 
+  getUtenteByEmail(email: string): Observable<Utenti> {
+    let token = this.accessService.getToken();
+    const headers = { 'Authorization': 'Bearer '+token }
+    const url = environment.apiUrl+"management/utenti/byEmail";
+    return this.http.post<Utenti>(url, email, {headers});
+  }
+
+  createUtente(userObj: any): Observable<Utenti> {
+    let token = this.accessService.getToken();
+    const headers = { 'Authorization': 'Bearer '+token };
+    const url = environment.apiUrl+"auth/register/";
+    return this.http.post<Utenti>(url, userObj, {headers});
+  }
+
   updateUtente(userObj : Utenti, id: number): Observable<Utenti> {
     let token = this.accessService.getToken();
     const headers = { 'Authorization': 'Bearer '+token };

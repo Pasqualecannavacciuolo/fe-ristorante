@@ -1,0 +1,32 @@
+<div class="container mt-3">
+  <h1 class="mb-3">Crea utente</h1>
+  <form [formGroup]="createUserForm">
+    <div class="mb-3">
+      <label for="nome" class="form-label">Nome</label>
+      <input formControlName="nome" type="text" class="form-control" id="nome">
+    </div>
+    <div class="mb-3">
+      <label for="cognome" class="form-label">Cognome</label>
+      <input formControlName="cognome" type="text" class="form-control" id="cognome">
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input formControlName="email" type="email" class="form-control" id="email">
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input formControlName="password" type="password" class="form-control" id="password">
+    </div>
+
+    <div class="mb-3">
+      <label for="ruolo" class="form-label">Ruolo</label>
+      <select formControlName="ruolo" class="form-select">
+        <option [attr.selected]="userObj?.role===adminRole ? true : null" value="1">Admin</option>
+        <option [attr.selected]="userObj?.role===managerRole ? true : null" value="2">Manager</option>
+        <option [attr.selected]="userObj?.role===userRole ? true : null" value="0">User</option>
+      </select>
+    </div>
+
+    <button type="submit" (click)="onSubmit()" class="btn btn-primary mt-3">Crea</button>
+  </form>
+</div>

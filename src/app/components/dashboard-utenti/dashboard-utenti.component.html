@@ -1,5 +1,12 @@
 <div class="container-fluid mt-5 mb-5">
-  <div class=" table-wrapper">
+  <div class="action-wrapper">
+    <div class="card" style="width: fit-content;">
+      <div class="card-body">
+        <h5 class="card-title"><a [routerLink]="['/home/',{ outlets: { dashboard: ['createUtente'] } }]">Aggiungi utente</a></h5>
+      </div>
+    </div>
+  </div>
+  <div class="table-wrapper">
     <div class="row">
       <app-actiontable [context]="'utenti'" [utenti]="utenti"></app-actiontable>
     </div>
