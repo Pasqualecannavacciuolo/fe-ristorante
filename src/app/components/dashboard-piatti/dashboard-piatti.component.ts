@@ -10,26 +10,7 @@ import { PiattiService } from 'src/app/services/piatti.service';
 })
 export class DashboardPiattiComponent implements OnInit {
 
-  piatti : Piatti[] = [
-    {
-      id: 1,
-      nome: 'Pasta al sugo',
-      costo: 13,
-      descrizione: 'Una pasta al sugo essicata lentamente e trafilata al bronzo condita con un sugo di pomodoro fresco.'
-    },
-    {
-      id: 2,
-      nome: 'Pasta al sugo',
-      costo: 13,
-      descrizione: 'Una pasta al sugo essicata lentamente e trafilata al bronzo condita con un sugo di pomodoro fresco.'
-    },
-    {
-      id: 3,
-      nome: 'Pasta al sugo',
-      costo: 13,
-      descrizione: 'Una pasta al sugo essicata lentamente e trafilata al bronzo condita con un sugo di pomodoro fresco.'
-    }
-  ];
+  piatti : Piatti[] = [];
 
   constructor(
     private piattiService: PiattiService,

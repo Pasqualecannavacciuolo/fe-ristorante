@@ -31,6 +31,13 @@ export class PiattiService {
       return this.http.get<Piatti>(url, {headers});
     }
 
+    createPiatto(piattoObj: any): Observable<Piatti> {
+      let token = this.accessService.getToken();
+      const headers = { 'Authorization': 'Bearer '+token };
+      const url = environment.apiUrl+"management/piatti/";
+      return this.http.post<Piatti>(url, piattoObj, {headers});
+    }
+
     updatePiatto(piattoObj : Piatti, id: number): Observable<Piatti> {
       let token = this.accessService.getToken();
       const headers = { 'Authorization': 'Bearer '+token };

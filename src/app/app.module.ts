@@ -19,6 +19,8 @@ import { SharedModule } from './shared/shared.module';
 import { NgApexchartsModule } from "ng-apexcharts";
 import { DashboardPiattiComponent } from './components/dashboard-piatti/dashboard-piatti.component';
 import { CreateUtenteComponent } from './components/dashboard-utenti/create-utente/create-utente.component';
+import { CreatePiattoComponent } from './components/dashboard-piatti/create-piatto/create-piatto.component';
+import { UpdatePiattoComponent } from './components/dashboard-piatti/update-piatto/update-piatto.component';
 
 
 @NgModule({
@@ -31,6 +33,8 @@ import { CreateUtenteComponent } from './components/dashboard-utenti/create-uten
     UpdateUtenteComponent,
     DashboardPiattiComponent,
     CreateUtenteComponent,
+    CreatePiattoComponent,
+    UpdatePiattoComponent,
   ],
   imports: [
     BrowserModule,

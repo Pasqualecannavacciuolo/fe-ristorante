@@ -7,6 +7,8 @@ import { DashboardUtentiComponent } from './components/dashboard-utenti/dashboar
 import { UpdateUtenteComponent } from './components/dashboard-utenti/update-utente/update-utente.component';
 import { DashboardPiattiComponent } from './components/dashboard-piatti/dashboard-piatti.component';
 import { CreateUtenteComponent } from './components/dashboard-utenti/create-utente/create-utente.component';
+import { CreatePiattoComponent } from './components/dashboard-piatti/create-piatto/create-piatto.component';
+import { UpdatePiattoComponent } from './components/dashboard-piatti/update-piatto/update-piatto.component';
 
 const routes: Routes = [
   {
@@ -42,6 +44,16 @@ const routes: Routes = [
         component: DashboardPiattiComponent,
         outlet: 'dashboard'
       },
+      {
+        path: 'createPiatto',
+        component: CreatePiattoComponent,
+        outlet: 'dashboard'
+      },
+      {
+        path: 'updatePiatto/:id',
+        component: UpdatePiattoComponent,
+        outlet: 'dashboard'
+      }
     ]
   }
 ];

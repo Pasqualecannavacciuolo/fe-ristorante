@@ -38,7 +38,7 @@ export class ActiontableComponent implements OnInit {
     }
   }
 
-  // Funzione che effettua il redirect alla pagina dove effettuare l'update dell'utente
+  // Funzione che effettua il redirect alla pagina dove effettuare l'update
   redirectToUpdate(context: string, obj?: any) : void {
     if(context === 'utenti') {
       this.router.navigate(['/home/',{ outlets: { dashboard: ['updateUtente', obj?.id] } }]);
@@ -47,7 +47,7 @@ export class ActiontableComponent implements OnInit {
     }
   }
 
-  // Funzione che permette l'eliminazione di un utente
+  // Funzione che permette l'eliminazione
   deleteObj(context?: string, userId? : number, piattoId? : number) : void {
     if(context === 'utenti') {
       this.utentiService.deleteUtente(userId!).subscribe(() => {

@@ -1,0 +1,19 @@
+<div class="container mt-3">
+  <h1 class="mb-3">Crea piatto</h1>
+  <form [formGroup]="createPiattoForm">
+    <div class="mb-3">
+      <label for="nome_piatto" class="form-label">Nome piatto</label>
+      <input formControlName="nome_piatto" type="text" class="form-control" id="nome_piatto">
+    </div>
+    <div class="mb-3">
+      <label for="costo" class="form-label">Costo</label>
+      <input formControlName="costo" type="text" class="form-control" id="costo">
+    </div>
+    <div class="mb-3">
+      <label for="descrizione" class="form-label">Descrizione</label>
+      <textarea formControlName="descrizione" type="text" class="form-control" id="descrizione"> </textarea>
+    </div>
+
+    <button type="submit" (click)="onSubmit()" class="btn btn-primary mt-3">Crea</button>
+  </form>
+</div>
