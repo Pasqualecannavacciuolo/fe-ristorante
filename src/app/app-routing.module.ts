@@ -9,11 +9,16 @@ import { DashboardPiattiComponent } from './components/dashboard-piatti/dashboar
 import { CreateUtenteComponent } from './components/dashboard-utenti/create-utente/create-utente.component';
 import { CreatePiattoComponent } from './components/dashboard-piatti/create-piatto/create-piatto.component';
 import { UpdatePiattoComponent } from './components/dashboard-piatti/update-piatto/update-piatto.component';
+import { ChangePasswordComponent } from './components/login/change-password/change-password.component';
 
 const routes: Routes = [
   {
     path: '',
     component: LoginComponent
+  },
+  {
+    path: 'changePassword',
+    component: ChangePasswordComponent
   },
   {
     path: 'home',

@@ -52,6 +52,14 @@ export class UtentiService {
     return this.http.put<Utenti>(url, userObj, {headers});
   }
 
+  updateCambioPassword(newCambioPassword : Boolean, newPassword : string, id: number): Observable<Utenti> {
+    let token = this.accessService.getToken();
+    const headers = { 'Authorization': 'Bearer '+token };
+    const url = environment.apiUrl+"management/utenti/cambioPassword/"+id;
+    let requestBodyParameters = {newCambioPassword, newPassword};
+    return this.http.put<Utenti>(url, requestBodyParameters, {headers});
+  }
+
   deleteUtente(id: number): Observable<Utenti> {
     let token = this.accessService.getToken();
     const headers = { 'Authorization': 'Bearer '+token };

@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Role } from 'src/app/enums/Role';
+import { Utenti } from 'src/app/models/Utenti';
 import { AccessService } from 'src/app/services/access.service';
+import { UtentiService } from 'src/app/services/utenti.service';
 
 @Component({
   selector: 'app-login',
@@ -11,10 +14,27 @@ import { AccessService } from 'src/app/services/access.service';
 export class LoginComponent {
 
   loginForm!: FormGroup;
+  userObj : Utenti = {
+    nome_utente: '',
+    salt: '',
+    password: '',
+    modificato_da: 0,
+    modificato_il: '',
+    creato_il: '',
+    creato_da: 0,
+    ultima_modifica_password: '',
+    nome: '',
+    cognome: '',
+    email: '',
+    cambio_password: false,
+    ultimo_accesso: '',
+    role: Role.USER
+  };
 
   constructor(
     private fb: FormBuilder,
     private accessService: AccessService,
+    private utentiService: UtentiService,
     private router: Router
     )
     {
@@ -42,6 +62,7 @@ export class LoginComponent {
       password: this.password?.value
     };
 
+
     this.accessService.authenticate(login_information.email, login_information.password)
     .subscribe((response) => {
       if(response.status == 200) {
@@ -49,8 +70,29 @@ export class LoginComponent {
         let risposta = this.bodyToJSON(response);
         // Salvo il token nel sessionStorage
         sessionStorage.setItem('accessToken', risposta.token);
-        // Redirect alla homepage della Dashboard
-        this.router.navigate(['home']);
+
+        // Controllo che sia il primo accesso
+        // Ottengo il token
+        const token = this.accessService.getToken();
+        // Decodifico il token
+        const tokenInfo = this.accessService.getDecodedAccessToken(token!);
+        this.utentiService.getUtenteByEmail(tokenInfo['sub']).subscribe( (res) => {
+          this.userObj.id = res.id;
+          if(res.cambio_password == false) {
+            this.router.navigate(['changePassword']);
+            /*this.utentiService.updateCambioPassword(true, this.userObj.id!).subscribe((res)=> {
+              // Se non ho cambiato la password al primo accesso faccio redirect a pagina per cambio password
+
+            });*/
+          }
+          // Se risulta che ho gia' modificato la password al primo accesso
+          else {
+            // Redirect alla homepage della Dashboard
+            this.router.navigate(['home']);
+          }
+        });
+
+
       }
     });
   }
