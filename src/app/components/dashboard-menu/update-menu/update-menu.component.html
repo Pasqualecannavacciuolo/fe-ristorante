@@ -11,8 +11,28 @@
     </div>
     <div class="mb-3">
       <label for="seleziona_piatti" class="form-label">Seleziona piatti</label>
-      <textarea formControlName="seleziona_piatti" type="text" class="form-control" id="seleziona_piatti"></textarea>
+
+      <div>
+        <!--<select formControlName="seleziona_piatti" class="selectpicker" multiple aria-label="size 3 select example">
+          <option [ngValue]="piatti">Four</option>
+        </select>-->
+
+
+        <!--<select multiple data-show-subtext="true" data-live-search="true" class="selectpicker" aria-label="size 3 select example" name="seleziona_piatti" formControlName="seleziona_piatti" [formControl]="piattiControl">
+          <option *ngFor="let piatto of piatti" [value]="piatto.nome" attr.data-subtext={{piatto.nome}}>
+            {{ piatto.nome }}
+          </option>
+        </select> -->
+
+        <select multiple *ngIf="piatti" id="select_picker" class="selectpicker" data-live-search="true" formControlName="seleziona_piatti">
+          <option *ngFor="let piatto of piatti" [value]="piatto.nome" >{{piatto.nome}} </option>
+        </select>
+
+
+      </div>
+
     </div>
     <button type="submit" (click)="onSubmit()" class="btn btn-primary mt-3">Aggiorna</button>
   </form>
 </div>
+

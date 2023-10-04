@@ -1,6 +1,9 @@
+import { Menu } from "./Menu";
+
 export interface Piatti {
   id?: number,
   nome: string,
   costo: number,
-  descrizione: string
+  descrizione: string,
+  menu?: Menu
 }

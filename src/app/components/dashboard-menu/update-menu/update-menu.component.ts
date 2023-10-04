@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Subject } from 'rxjs';
+import { Piatti } from 'src/app/models/Piatti';
 import { MenuService } from 'src/app/services/menu.service';
 import { PiattiService } from 'src/app/services/piatti.service';
 
@@ -13,10 +15,36 @@ export class UpdateMenuComponent implements OnInit {
 
   id : any = 0;
   menuId! : number;
-  menuObj : any = {};
-  updatedMenuObj : any = {};
-
   updateMenuForm! : FormGroup;
+  selectedOption: any;
+  piattiControl = new FormControl();
+
+  /*piatti : Piatti[] = [
+    {
+      "id": 3,
+      "nome": "Penne al pomodoro",
+      "costo": 11,
+      "descrizione": "Descrizione di penne al pomodoro",
+      "menu": {
+          "id": 1,
+          "nome": "Menu estivo 2",
+          "attivo": true
+      }
+  },
+  {
+      "id": 5,
+      "nome": "Fagioli con le cozze",
+      "costo": 17,
+      "descrizione": "Descrizione di fagioli con le cozze",
+      "menu": {
+          "id": 1,
+          "nome": "Menu estivo 2",
+          "attivo": true
+      }
+  }
+  ];*/
+
+  piatti : Piatti[] = [];
 
   constructor(
     private menuService: MenuService,
@@ -25,27 +53,41 @@ export class UpdateMenuComponent implements OnInit {
     private formBuilder: FormBuilder
   ) { }
 
+  searchedOptions : any = [];
+
+  onSeachDropdownValue($event : any) {
+  const value = $event.target.value;
+  this.searchedOptions = this.piatti.filter(piatto=> piatto.nome.includes(value));
+  }
+
   ngOnInit(): void {
     // Creo il FORM
     this.updateMenuForm = this.formBuilder.group({
       nome_menu: ['', Validators.required],
       attivo: ['', Validators.required],
-      seleziona_piatti: ['',]
+      seleziona_piatti: ['']
     });
 
     // Ottengo l'ID contenuto nell'URL
     this.id = this.route.snapshot.paramMap.get('id');
     this.menuId = parseInt(this.id);
 
-    // Ottengo il piatto in base all'ID contenuto nell'URL
-    this.menuService.getMenu(this.menuId).subscribe(data => {
-      this.menuObj = data;
-      // Inizializzo il form con i valori presi dal database
-      this.updateMenuForm.patchValue({nome_menu : this.menuObj.nome});
-      this.updateMenuForm.patchValue({attivo : this.menuObj.attivo});
-      this.updateMenuForm.patchValue({seleziona_piatti : this.menuObj.seleziona_piatti});
-
-      console.log(this.menuObj)
+    // Ottengo tutti i piatti
+    this.piattiService.getAllPiatti().subscribe(data => {
+      this.piatti = data;
+      this.selectedOption = this.piatti[0];
+      // Ottengo il piatto in base all'ID contenuto nell'URL
+      this.menuService.getMenu(this.menuId).subscribe(data => {
+        // Inizializzo il form con i valori presi dal database
+        this.updateMenuForm.patchValue({nome_menu : data.nome});
+        this.updateMenuForm.patchValue({attivo : data.attivo});
+        //@ts-ignore
+        $('#select_picker').selectpicker('refresh');
+        //@ts-ignore
+        //$('#select_picker').selectpicker('val', 'Penne al pomodoro');
+        //@ts-ignore
+        //$('.selectpicker').selectpicker('render');
+      });
     });
   }
 
@@ -70,13 +112,15 @@ export class UpdateMenuComponent implements OnInit {
       seleziona_piatti: this.seleziona_piatti?.value
     };
 
-    this.updatedMenuObj = this.menuObj;
+    console.log(passedData)
+
+    /*this.updatedMenuObj = this.menuObj;
 
     this.updatedMenuObj.nome_menu = passedData.nome_menu;
     this.updatedMenuObj.attivo = passedData.attivo;
-    this.updatedMenuObj.seleziona_piatti = passedData.seleziona_piatti;
+    this.updatedMenuObj.seleziona_piatti = passedData.seleziona_piatti;*/
 
-    this.menuService.updateMenu(this.updatedMenuObj.nome_menu, this.updatedMenuObj.attivo, this.menuId).subscribe(res => {
+    this.menuService.updateMenu(passedData.nome_menu, passedData.attivo, this.menuId).subscribe(res => {
       // Operazioni da effettuare dopo l'invio del form
       console.log(res)
     });

@@ -24,6 +24,13 @@ export class PiattiService {
       return this.http.get<Piatti[]>(url, {headers});
     }
 
+    getPiattiByMenuID(id : number): Observable<Piatti[]> {
+      let token = this.accessService.getToken();
+      const headers = { 'Authorization': 'Bearer '+token }
+      const url = environment.apiUrl+"management/piatti/byMenuID/"+id;
+      return this.http.get<Piatti[]>(url, {headers});
+    }
+
     getPiatto(id: number): Observable<Piatti> {
       let token = this.accessService.getToken();
       const headers = { 'Authorization': 'Bearer '+token }
