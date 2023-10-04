@@ -10,6 +10,9 @@ import { CreateUtenteComponent } from './components/dashboard-utenti/create-uten
 import { CreatePiattoComponent } from './components/dashboard-piatti/create-piatto/create-piatto.component';
 import { UpdatePiattoComponent } from './components/dashboard-piatti/update-piatto/update-piatto.component';
 import { ChangePasswordComponent } from './components/login/change-password/change-password.component';
+import { DashboardMenuComponent } from './components/dashboard-menu/dashboard-menu.component';
+import { CreateMenuComponent } from './components/dashboard-menu/create-menu/create-menu.component';
+import { UpdateMenuComponent } from './components/dashboard-menu/update-menu/update-menu.component';
 
 const routes: Routes = [
   {
@@ -58,7 +61,22 @@ const routes: Routes = [
         path: 'updatePiatto/:id',
         component: UpdatePiattoComponent,
         outlet: 'dashboard'
-      }
+      },
+      {
+        path: 'menu',
+        component: DashboardMenuComponent,
+        outlet: 'dashboard'
+      },
+      {
+        path: 'createMenu',
+        component: CreateMenuComponent,
+        outlet: 'dashboard'
+      },
+      {
+        path: 'updateMenu/:id',
+        component: UpdateMenuComponent,
+        outlet: 'dashboard'
+      },
     ]
   }
 ];

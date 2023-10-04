@@ -22,6 +22,9 @@ import { CreateUtenteComponent } from './components/dashboard-utenti/create-uten
 import { CreatePiattoComponent } from './components/dashboard-piatti/create-piatto/create-piatto.component';
 import { UpdatePiattoComponent } from './components/dashboard-piatti/update-piatto/update-piatto.component';
 import { ChangePasswordComponent } from './components/login/change-password/change-password.component';
+import { DashboardMenuComponent } from './components/dashboard-menu/dashboard-menu.component';
+import { CreateMenuComponent } from './components/dashboard-menu/create-menu/create-menu.component';
+import { UpdateMenuComponent } from './components/dashboard-menu/update-menu/update-menu.component';
 
 
 @NgModule({
@@ -37,6 +40,9 @@ import { ChangePasswordComponent } from './components/login/change-password/chan
     CreatePiattoComponent,
     UpdatePiattoComponent,
     ChangePasswordComponent,
+    DashboardMenuComponent,
+    CreateMenuComponent,
+    UpdateMenuComponent,
   ],
   imports: [
     BrowserModule,

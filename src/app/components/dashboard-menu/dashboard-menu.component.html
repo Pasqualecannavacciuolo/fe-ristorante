@@ -1,0 +1,14 @@
+<div class="container-fluid mt-5 mb-5">
+  <div class="action-wrapper">
+    <div class="card" style="width: fit-content;">
+      <div class="card-body">
+        <h5 class="card-title"><a [routerLink]="['/home/',{ outlets: { dashboard: ['createMenu'] } }]">Aggiungi menu</a></h5>
+      </div>
+    </div>
+  </div>
+  <div class=" table-wrapper">
+    <div class="row">
+      <app-actiontable [context]="'menu'" [menu]="menu"></app-actiontable>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="container mt-3">
+  <h1 class="mb-3">Modifica menu</h1>
+  <form [formGroup]="updateMenuForm">
+    <div class="mb-3">
+      <label for="nome_menu" class="form-label">Nome menu</label>
+      <input formControlName="nome_menu" type="text" class="form-control" id="nome_menu">
+    </div>
+    <div class="mb-3">
+      <label for="attivo" class="form-label">Attivo</label>
+      <input class="form-check-input" type="checkbox" formControlName="attivo" id="attivo">
+    </div>
+    <div class="mb-3">
+      <label for="seleziona_piatti" class="form-label">Seleziona piatti</label>
+      <textarea formControlName="seleziona_piatti" type="text" class="form-control" id="seleziona_piatti"></textarea>
+    </div>
+    <button type="submit" (click)="onSubmit()" class="btn btn-primary mt-3">Aggiorna</button>
+  </form>
+</div>

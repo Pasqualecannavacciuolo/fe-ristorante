@@ -54,7 +54,7 @@
         </button>
       </li>
       <li class="mb-1">
-        <button class="btn align-items-center rounded" (click)="onClick('is_hovered_menu', 'is_hovered_menu_img')">
+        <button [routerLink]="[{ outlets: { dashboard: ['menu'] } }]" class="btn align-items-center rounded" (click)="onClick('is_hovered_menu', 'is_hovered_menu_img')">
           <div class="icon-container">
             <div id="is_hovered_menu" class="menu-item hover align-items-center">
               <img id="is_hovered_menu_img"width="32" height="32" src="../assets/menu_black.png" class="is_hovered_img"/>

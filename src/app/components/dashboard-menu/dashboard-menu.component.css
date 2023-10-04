@@ -1,0 +1,23 @@
+.table-wrapper {
+  background-color: #fff;
+  border-radius: 9px;
+  padding: 15px;
+  margin: 7px;
+}
+
+.action-wrapper {
+  background-color: red;
+  border-radius: 9px;
+  margin: 7px;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.card-title {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
