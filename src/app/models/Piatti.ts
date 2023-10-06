@@ -5,5 +5,6 @@ export interface Piatti {
   nome: string,
   costo: number,
   descrizione: string,
-  menu?: Menu
+  menu?: Menu,
+  checked?: boolean
 }

@@ -10,25 +10,45 @@
       <input class="form-check-input" type="checkbox" formControlName="attivo" id="attivo">
     </div>
     <div class="mb-3">
-      <label for="seleziona_piatti" class="form-label">Seleziona piatti</label>
 
       <div>
-        <!--<select formControlName="seleziona_piatti" class="selectpicker" multiple aria-label="size 3 select example">
-          <option [ngValue]="piatti">Four</option>
-        </select>-->
+        <div class="row">
+          <div class="col-sm">
+            <h2>Piatti presenti nel menu</h2>
+            <div>
+              <!-- WORKING-->
+              <!--
+              <select multiple *ngIf="piatti" data-width="auto" id="select_picker" class="selectpicker" data-live-search="true" formControlName="seleziona_piatti">
+                <option *ngFor="let piatto of piatti" [value]="piatto.nome" >{{piatto.nome}} </option>
+              </select>-->
 
+              <ul data-live-search="true" class="list-group">
+                <li *ngFor="let piatto of alreadyPresentPiatti" class="list-group-item">
+                  {{piatto.nome}}
+                </li>
+              </ul>
 
-        <!--<select multiple data-show-subtext="true" data-live-search="true" class="selectpicker" aria-label="size 3 select example" name="seleziona_piatti" formControlName="seleziona_piatti" [formControl]="piattiControl">
-          <option *ngFor="let piatto of piatti" [value]="piatto.nome" attr.data-subtext={{piatto.nome}}>
-            {{ piatto.nome }}
-          </option>
-        </select> -->
+            </div>
+          </div>
+          <div class="col-sm">
+            <h2>Tutti i piatti</h2>
+            <div>
+              <!-- WORKING-->
+              <!--
+              <select multiple *ngIf="piatti" data-width="auto" id="select_picker" class="selectpicker" data-live-search="true" formControlName="seleziona_piatti">
+                <option *ngFor="let piatto of piatti" [value]="piatto.nome" >{{piatto.nome}} </option>
+              </select>-->
 
-        <select multiple *ngIf="piatti" id="select_picker" class="selectpicker" data-live-search="true" formControlName="seleziona_piatti">
-          <option *ngFor="let piatto of piatti" [value]="piatto.nome" >{{piatto.nome}} </option>
-        </select>
+              <ul data-live-search="true" class="list-group">
+                <li *ngFor="let piatto of totalOfPiatti" class="list-group-item">
+                  <input id=`piatto-{{piatto.id}}` class="custom-checkbox form-check-input me-1" type="checkbox" [value]="piatto" [name]="piatto.nome" (change)="addToMenu($event, piatto)" formControlName="{{piatto.nome}}">
+                  {{piatto.nome}}
+                </li>
+              </ul>
 
-
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>
