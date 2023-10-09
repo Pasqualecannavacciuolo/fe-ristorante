@@ -38,6 +38,13 @@ export class MenuService {
       return this.http.post<Menu>(url, menuObj, {headers});
     }
 
+    addPiatti(menuObj: any, id: number): Observable<Menu> {
+      let token = this.accessService.getToken();
+      const headers = { 'Authorization': 'Bearer '+token };
+      const url = environment.apiUrl+"management/menu/addPiatti/"+id;
+      return this.http.post<Menu>(url, menuObj, {headers});
+    }
+
     updateMenu(newNomeMenu : string, newAttivo : boolean, id: number): Observable<Menu> {
       let token = this.accessService.getToken();
       const headers = { 'Authorization': 'Bearer '+token };

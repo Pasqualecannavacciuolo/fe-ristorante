@@ -52,7 +52,7 @@ export class UpdateMenuComponent implements OnInit {
     });
 
     // FORKJOIN mi consente di effettuare in parallelo piu' chiamate al DB
-    forkJoin([this.piattiService.getAllPiatti(), this.piattiService.getPiattiByMenuID(this.menuId)]).subscribe(([piattiTotali, piattiGiaPresenti]) => {
+    /*forkJoin([this.piattiService.getAllPiatti(), this.piattiService.getPiattiByMenuID(this.menuId)]).subscribe(([piattiTotali, piattiGiaPresenti]) => {
       // Confronto i piatti totali ed i piatti presenti nel menu
       piattiTotali.forEach(piattoInTotal => {
         piattiGiaPresenti.forEach(piattoAlreadySelected => {
@@ -63,12 +63,25 @@ export class UpdateMenuComponent implements OnInit {
             piattoInTotal.checked = false;
           }
         });
-      });
+      });*/
+
+      forkJoin([this.piattiService.getAllPiatti(), this.menuService.getMenu(this.menuId)]).subscribe(([piattiTotali, piattiGiaPresenti]) => {
+        // Confronto i piatti totali ed i piatti presenti nel menu
+        piattiTotali.forEach(piattoInTotal => {
+          piattiGiaPresenti['lista_piatti']!.forEach(piattoAlreadySelected => {
+            // Se trovo un riscontro flaggo a true nei piatti totali i piatti gia presenti in questo menu
+            if(piattoInTotal.id == piattoAlreadySelected.id) {
+              piattoInTotal.checked = true;
+            } else if(piattoInTotal.checked == null){
+              piattoInTotal.checked = false;
+            }
+          });
+        });
 
       // Ottengo tutti i piatti
       this.totalOfPiatti = piattiTotali;
       // Ottengo i piatti presenti nel menu
-      this.alreadyPresentPiatti = piattiGiaPresenti;
+      this.alreadyPresentPiatti = piattiGiaPresenti.lista_piatti!;
 
       // Per ogni piatto presente nel menu creo una checkbox con il suo valore flaggto
       for (let i = 0; i < this.totalOfPiatti.length; i++) {

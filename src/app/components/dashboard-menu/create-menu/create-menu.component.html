@@ -1,1 +1,48 @@
-<p>create-menu works!</p>
+<div class="container mt-3">
+  <h1 class="mb-3">Crea menu</h1>
+  <form [formGroup]="createMenuForm">
+    <div class="mb-3">
+      <label for="nome_menu" class="form-label">Nome menu</label>
+      <input formControlName="nome_menu" type="text" class="form-control" id="nome_menu">
+    </div>
+    <div class="mb-3">
+      <label for="attivo" class="form-label">Attivo</label>
+      <input class="form-check-input" type="checkbox" formControlName="attivo" id="attivo">
+    </div>
+    <div class="mb-3">
+
+      <div>
+        <div class="row">
+          <div class="col-sm">
+            <h2>Piatti presenti nel menu</h2>
+            <div>
+
+              <ul data-live-search="true" class="list-group">
+                <li *ngFor="let piatto of piatti_selezionati" class="list-group-item">
+                  {{piatto.nome}}
+                </li>
+              </ul>
+
+            </div>
+          </div>
+          <div class="col-sm">
+            <h2>Tutti i piatti</h2>
+            <div>
+
+              <ul data-live-search="true" class="list-group">
+                <li *ngFor="let piatto of totalOfPiatti" class="list-group-item">
+                  <input id=`piatto-{{piatto.id}}` class="custom-checkbox form-check-input me-1" type="checkbox" [value]="piatto" [name]="piatto.nome" (change)="addToMenu($event, piatto)" formControlName="{{piatto.nome}}">
+                  {{piatto.nome}}
+                </li>
+              </ul>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <button type="submit" (click)="onSubmit()" class="btn btn-primary mt-3">Crea</button>
+  </form>
+</div>
+
