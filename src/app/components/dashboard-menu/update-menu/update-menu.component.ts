@@ -44,6 +44,13 @@ export class UpdateMenuComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id');
     this.menuId = parseInt(this.id);
 
+    // Ottengo il piatto in base all'ID contenuto nell'URL
+    this.menuService.getMenu(this.menuId).subscribe(data => {
+      // Inizializzo il form con i valori presi dal database
+      this.updateMenuForm.patchValue({ nome_menu: data.nome });
+      this.updateMenuForm.patchValue({ attivo: data.attivo });
+    });
+
     // FORKJOIN mi consente di effettuare in parallelo piu' chiamate al DB
     forkJoin([this.piattiService.getAllPiatti(), this.piattiService.getPiattiByMenuID(this.menuId)]).subscribe(([piattiTotali, piattiGiaPresenti]) => {
       // Confronto i piatti totali ed i piatti presenti nel menu
@@ -69,13 +76,6 @@ export class UpdateMenuComponent implements OnInit {
         fg.addControl(this.totalOfPiatti[i].nome, new FormControl(this.totalOfPiatti[i].checked));
         this.updateMenuForm.addControl(this.totalOfPiatti[i].nome.toString(), new FormControl(this.totalOfPiatti[i].checked))
       }
-
-      // Ottengo il piatto in base all'ID contenuto nell'URL
-      this.menuService.getMenu(this.menuId).subscribe(data => {
-        // Inizializzo il form con i valori presi dal database
-        this.updateMenuForm.patchValue({ nome_menu: data.nome });
-        this.updateMenuForm.patchValue({ attivo: data.attivo });
-      });
     });
 
   }
