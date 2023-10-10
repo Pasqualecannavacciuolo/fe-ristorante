@@ -21,7 +21,7 @@ export class UpdateMenuComponent implements OnInit {
 
   totalOfPiatti : Piatti[] = [];
   alreadyPresentPiatti : Piatti[] = [];
-  piatti_selezionati: never[] = [];
+  piatti_selezionati: Piatti[] = [];
 
   constructor(
     private menuService: MenuService,
@@ -117,8 +117,11 @@ export class UpdateMenuComponent implements OnInit {
       seleziona_piatti: this.alreadyPresentPiatti
     };
 
-    this.menuService.updateMenu(passedData.nome_menu, passedData.attivo, this.menuId).subscribe(res => {
+    this.menuService.updateMenu(passedData.nome_menu, passedData.attivo, this.menuId).subscribe(updateRes => {
       // Operazioni da effettuare dopo l'invio del form
+      this.menuService.addPiatti(this.piatti_selezionati, updateRes.id!).subscribe(res => {
+        console.log(res)
+      });
     });
   }
 
@@ -129,11 +132,13 @@ export class UpdateMenuComponent implements OnInit {
    * @param piatto --> prende in input il piatto da eliminare dalla lista
    */
   removeFromMenu(piatto : Piatti) {
+    console.log("Rimosso")
     // Converto la stringa JSON in Object utilizzabile
     let jsonPiattoString = JSON.stringify(piatto);
     let objPiatto : Piatti = JSON.parse(jsonPiattoString);
     // Rimuovo il piatto dalla lista dei piatti da aggiungere al menu
     this.alreadyPresentPiatti = this.alreadyPresentPiatti.filter(piatto => piatto.id != objPiatto.id);
+    this.piatti_selezionati = this.piatti_selezionati.filter(piatto => piatto.id != objPiatto.id);
     // Aggiorno il Frontend
     this.changeDetection.detectChanges();
 
@@ -149,7 +154,9 @@ export class UpdateMenuComponent implements OnInit {
   addToMenu(event: any, piatto : Piatti) {
     // Se ho cliccato sulla checkbox ed ora e' selezionata allora aggiungo il piatto
     if(event.target.checked == true) {
+      console.log("Aggiunto")
       this.alreadyPresentPiatti.push(piatto);
+      this.piatti_selezionati.push(piatto);
       // Aggiorno il Frontend
       this.changeDetection.detectChanges();
       console.log(this.alreadyPresentPiatti)
