@@ -21,7 +21,7 @@ export class UpdateMenuComponent implements OnInit {
 
   totalOfPiatti : Piatti[] = [];
   alreadyPresentPiatti : Piatti[] = [];
-  piatti_selezionati: Piatti[] = [];
+  //piatti_selezionati: never[] = [];
 
   constructor(
     private menuService: MenuService,
@@ -119,7 +119,7 @@ export class UpdateMenuComponent implements OnInit {
 
     this.menuService.updateMenu(passedData.nome_menu, passedData.attivo, this.menuId).subscribe(updateRes => {
       // Operazioni da effettuare dopo l'invio del form
-      this.menuService.addPiatti(this.piatti_selezionati, updateRes.id!).subscribe(res => {
+      this.menuService.addPiatti(passedData.seleziona_piatti, updateRes.id!).subscribe(res => {
         console.log(res)
       });
     });
@@ -138,7 +138,6 @@ export class UpdateMenuComponent implements OnInit {
     let objPiatto : Piatti = JSON.parse(jsonPiattoString);
     // Rimuovo il piatto dalla lista dei piatti da aggiungere al menu
     this.alreadyPresentPiatti = this.alreadyPresentPiatti.filter(piatto => piatto.id != objPiatto.id);
-    this.piatti_selezionati = this.piatti_selezionati.filter(piatto => piatto.id != objPiatto.id);
     // Aggiorno il Frontend
     this.changeDetection.detectChanges();
 
@@ -156,7 +155,6 @@ export class UpdateMenuComponent implements OnInit {
     if(event.target.checked == true) {
       console.log("Aggiunto")
       this.alreadyPresentPiatti.push(piatto);
-      this.piatti_selezionati.push(piatto);
       // Aggiorno il Frontend
       this.changeDetection.detectChanges();
       console.log(this.alreadyPresentPiatti)
