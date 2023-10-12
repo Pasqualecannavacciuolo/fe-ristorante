@@ -21,7 +21,6 @@ export class UpdateMenuComponent implements OnInit {
 
   totalOfPiatti : Piatti[] = [];
   alreadyPresentPiatti : Piatti[] = [];
-  //piatti_selezionati: never[] = [];
 
   constructor(
     private menuService: MenuService,
@@ -50,20 +49,6 @@ export class UpdateMenuComponent implements OnInit {
       this.updateMenuForm.patchValue({ nome_menu: data.nome });
       this.updateMenuForm.patchValue({ attivo: data.attivo });
     });
-
-    // FORKJOIN mi consente di effettuare in parallelo piu' chiamate al DB
-    /*forkJoin([this.piattiService.getAllPiatti(), this.piattiService.getPiattiByMenuID(this.menuId)]).subscribe(([piattiTotali, piattiGiaPresenti]) => {
-      // Confronto i piatti totali ed i piatti presenti nel menu
-      piattiTotali.forEach(piattoInTotal => {
-        piattiGiaPresenti.forEach(piattoAlreadySelected => {
-          // Se trovo un riscontro flaggo a true nei piatti totali i piatti gia presenti in questo menu
-          if(piattoInTotal.id == piattoAlreadySelected.id) {
-            piattoInTotal.checked = true;
-          } else if(piattoInTotal.checked == null){
-            piattoInTotal.checked = false;
-          }
-        });
-      });*/
 
       forkJoin([this.piattiService.getAllPiatti(), this.menuService.getMenu(this.menuId)]).subscribe(([piattiTotali, piattiGiaPresenti]) => {
         // Confronto i piatti totali ed i piatti presenti nel menu
