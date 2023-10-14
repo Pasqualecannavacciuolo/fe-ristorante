@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Menu } from 'src/app/models/Menu';
 import { Piatti } from 'src/app/models/Piatti';
 import { Utenti } from 'src/app/models/Utenti';
@@ -12,17 +13,20 @@ import { UtentiService } from 'src/app/services/utenti.service';
   templateUrl: './actiontable.component.html',
   styleUrls: ['./actiontable.component.css']
 })
-export class ActiontableComponent implements OnInit {
+export class ActiontableComponent implements OnInit, OnDestroy {
 
   //@Input() utenti : Utenti[] = [];
   @Input() utenti$?: any;
   utenti : Utenti[] = [];
+  utentiSubscription: Subscription = new Subscription;
   //@Input() piatti : Piatti[] = [];
   @Input() piatti$?: any;
   piatti : Piatti[] = [];
+  piattiSubscription: Subscription = new Subscription;
   //@Input() menu : Menu[] = [];
   @Input() menu$?: any;
   menu : Menu[] = [];
+  menuSubscription: Subscription = new Subscription;
   @Input() context = '';
 
   constructor(
@@ -32,17 +36,25 @@ export class ActiontableComponent implements OnInit {
     private menuService: MenuService
     ) {}
 
+
   ngOnInit(): void {
     if(this.utenti$) {
-      this.utenti$.subscribe((res: any) => this.utenti = res);
+      this.utentiSubscription = this.utenti$.subscribe((res: any) => this.utenti = res);
     }
     if(this.piatti$) {
-      this.piatti$.subscribe((res: any) => this.piatti = res);
+      this.piattiSubscription = this.piatti$.subscribe((res: any) => this.piatti = res);
     }
     if(this.menu$) {
-      this.menu$.subscribe((res: any) => this.menu = res);
+      this.menuSubscription = this.menu$.subscribe((res: any) => this.menu = res);
     }
   }
+
+  ngOnDestroy(): void {
+    this.utentiSubscription.unsubscribe();
+    this.piattiSubscription.unsubscribe();
+    this.menuSubscription.unsubscribe();
+  }
+
 
   /**
    * Funzione che permette di ricaricare l'url corrente dopo aver effettato un'operazione

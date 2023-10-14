@@ -11,7 +11,7 @@
         <th scope="col">Nome</th>
         <th scope="col">Cognome</th>
         <th scope="col">Ruolo</th>
-        <th scope="col">Presenza</th>
+        <!--<th scope="col">Presenza</th>-->
         <th class="text-center" scope="col">Modifica</th>
         <th class="text-center" scope="col">Cancella</th>
       </tr>
@@ -24,6 +24,7 @@
         <td>{{ user.nome }}</td>
         <td>{{ user.cognome }}</td>
         <td>{{ user.role }}</td>
+        <!--
         <td>
           <span
           [ngClass]="{
@@ -32,6 +33,7 @@
             'bg-soft-success text-success' : user.presenza === 'presente'
           }" class="badge">{{ user.presenza }}</span>
         </td>
+        -->
         <td class="text-center pointer">
           <button (click)="redirectToUpdate('utenti',user)" class="btn">
             <img src="../../../../../assets/modifica.png" width="36px" height="36px" />
