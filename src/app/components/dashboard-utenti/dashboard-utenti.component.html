@@ -8,7 +8,77 @@
   </div>
   <div class="table-wrapper">
     <div class="row">
-      <app-actiontable [context]="'utenti'" [utenti$]="utenti$"></app-actiontable>
+      <div class="table-responsive" id="table">
+      <!--
+        <app-actiontable [context]="'utenti'" [utenti$]="utenti$"></app-actiontable>
+      -->
+      <table class="table table-borderless caption-top table-hover table-nowrap">
+        <caption>Effettua delle modifiche</caption>
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col"></th>
+            <th scope="col">Nome_Utente</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Cognome</th>
+            <th scope="col">Ruolo</th>
+            <!--<th scope="col">Presenza</th>-->
+            <th class="text-center" scope="col">Modifica</th>
+            <th class="text-center" scope="col">Cancella</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of utenti$ | async">
+            <th scope="row">{{ user.id }}</th>
+            <td><img class="avatar avatar-sm rounded-circle me-2" src="../../../../../assets/user1.jpeg"/></td>
+            <td>{{ user.nome_utente }}</td>
+            <td>{{ user.nome }}</td>
+            <td>{{ user.cognome }}</td>
+            <td>{{ user.role }}</td>
+            <!--
+            <td>
+              <span
+              [ngClass]="{
+                'bg-soft-warning text-warning' : user.presenza === 'timbrato in ritardo',
+                'bg-soft-danger text-danger' : user.presenza === 'assente',
+                'bg-soft-success text-success' : user.presenza === 'presente'
+              }" class="badge">{{ user.presenza }}</span>
+            </td>
+            -->
+            <td class="text-center pointer">
+              <button (click)="redirectToUpdate(user)" class="btn">
+                <img src="../../../../../assets/modifica.png" width="36px" height="36px" />
+              </button>
+            </td>
+            <td class="text-center pointer">
+              <!-- Button trigger modal -->
+              <button type="button" class="btn" data-bs-toggle="modal" [attr.data-bs-target]="'#Modal'+user.id">
+                <img src="../../../../../assets/elimina.png" width="36px" height="36px" />
+              </button>
+
+              <!-- Modal -->
+              <div class="modal fade" id="Modal{{user.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Conferma eliminazione per userID: {{user.id}}</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      Vuoi davvero procedere all'eliminazione?
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Indietro</button>
+                      <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="deleteObj(user.id)">Procedi</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
     </div>
   </div>
 </div>

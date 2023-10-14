@@ -102,15 +102,15 @@ export class ActiontableComponent implements OnInit, OnDestroy {
    */
   deleteObj(context?: string, userId? : number, piattoId? : number, menuId? : number) : void {
     if(context === 'utenti') {
-      this.utentiService.deleteUtente(userId!).subscribe(() => {
+      this.utentiSubscription = this.utentiService.deleteUtente(userId!).subscribe(() => {
         this.reloadCurrentRoute(context);
       });
     } else if(context === 'piatti') {
-      this.piattiService.deletePiatto(piattoId!).subscribe(() => {
+      this.piattiSubscription = this.piattiService.deletePiatto(piattoId!).subscribe(() => {
         this.reloadCurrentRoute(context);
       });
     } else if(context === 'menu') {
-      this.menuService.deleteMenu(menuId!).subscribe(() => {
+      this.menuSubscription = this.menuService.deleteMenu(menuId!).subscribe(() => {
         this.reloadCurrentRoute(context);
       });
     }
