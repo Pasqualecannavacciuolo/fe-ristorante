@@ -9,7 +9,7 @@
         <th scope="col">Nome</th>
         <th scope="col">Cognome</th>
         <th scope="col">Ruolo</th>
-        <th scope="col">Presenza</th>
+        <!--<th scope="col">Presenza</th>-->
       </tr>
     </thead>
     <tbody>
@@ -20,14 +20,16 @@
         <td>{{ user.nome }}</td>
         <td>{{ user.cognome }}</td>
         <td>{{ user.role }}</td>
-        <td>
-          <span
-          [ngClass]="{
-            'bg-soft-warning text-warning' : user.presenza === 'timbrato in ritardo',
-            'bg-soft-danger text-danger' : user.presenza === 'assente',
-            'bg-soft-success text-success' : user.presenza === 'presente'
-          }" class="badge">{{ user.presenza }}</span>
-        </td>
+        <!--
+          <td>
+            <span
+            [ngClass]="{
+              'bg-soft-warning text-warning' : user.presenza === 'timbrato in ritardo',
+              'bg-soft-danger text-danger' : user.presenza === 'assente',
+              'bg-soft-success text-success' : user.presenza === 'presente'
+            }" class="badge">{{ user.presenza }}</span>
+          </td>
+        -->
       </tr>
     </tbody>
   </table>

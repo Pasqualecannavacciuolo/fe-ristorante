@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Piatti } from 'src/app/models/Piatti';
 import { PiattiService } from 'src/app/services/piatti.service';
 
@@ -10,18 +11,20 @@ import { PiattiService } from 'src/app/services/piatti.service';
 })
 export class DashboardPiattiComponent implements OnInit {
 
-  piatti : Piatti[] = [];
-
+  //piatti : Piatti[] = [];
+  piatti$ : Observable<Piatti[]>;
   constructor(
     private piattiService: PiattiService,
     private router: Router
-  ) { }
+  ) {
+    this.piatti$ = this.piattiService.getAllPiatti();
+  }
 
   ngOnInit(): void {
-    this.piattiService.getAllPiatti().subscribe(data => {
+    /*this.piattiService.getAllPiatti().subscribe(data => {
       this.piattiService.piatti = data;
       this.piatti = data;
-    });
+    });*/
   }
 
 }

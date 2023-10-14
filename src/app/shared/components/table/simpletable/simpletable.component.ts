@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Utenti } from 'src/app/models/Utenti';
 
 @Component({
@@ -8,10 +9,14 @@ import { Utenti } from 'src/app/models/Utenti';
 })
 export class SimpletableComponent implements OnInit {
 
-  @Input() utenti : Utenti[] = [];
+  //@Input() utenti : Utenti[] = [];
+  @Input() utenti$: any;
+  utenti : Utenti[] = [];
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.utenti$.subscribe((res: any) => this.utenti = res)
+  }
 
 }

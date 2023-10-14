@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Utenti } from 'src/app/models/Utenti';
 import { UtentiService } from 'src/app/services/utenti.service';
 
@@ -35,10 +36,13 @@ export class DashboardHomeComponent implements OnInit {
   lineStrokePrenotazioni : any = {};
 
   // Tabella utenti
-  utenti : Utenti[] = [];
+  //utenti : Utenti[] = [];
+  utenti$ : Observable<Utenti[]>;
   presenza : string[] = ['presente', 'assente', 'timbrato in ritardo'];
 
-  constructor(private utentiService: UtentiService) {}
+  constructor(private utentiService: UtentiService) {
+    this.utenti$ = this.utentiService.getAllUtenti();
+  }
 
   ngOnInit(): void {
 
@@ -182,12 +186,12 @@ export class DashboardHomeComponent implements OnInit {
     }
 
     // TABELLA DEL PERSONALE
-    this.utentiService.getAllUtenti().subscribe( data => {
+    /*this.utentiService.getAllUtenti().subscribe( data => {
       this.utenti = data;
       this.utenti.forEach(utente => {
         utente.presenza = this.presenza[(Math.floor(Math.random() * this.presenza.length))];
       });
-    });
+    });*/
 
   }
 
