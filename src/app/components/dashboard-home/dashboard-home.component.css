@@ -12,7 +12,7 @@
 
 /* Smartphone */
 @media (max-width: 600px) {
-  .line-chart-wrapper {
+  .line-chart-wrapper, .table-wrapper {
     margin: 7px 0;
   }
 }
@@ -20,7 +20,7 @@
 
 /* Tablet */
 @media (max-width: 900px) {
-  .line-chart-wrapper {
+  .line-chart-wrapper, .table-wrapper {
     margin: 7px 0;
   }
 }
